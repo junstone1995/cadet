@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:42:03 by junseole          #+#    #+#             */
-/*   Updated: 2020/12/23 16:32:13 by junseole         ###   ########.fr       */
+/*   Updated: 2020/12/23 18:42:20 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,4 @@ int		ft_atoi(char *str)
 		return ((-1) * result);
 	return (result);
 }
+//예외처리 해야됨
