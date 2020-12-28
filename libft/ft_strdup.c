@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 23:31:08 by junseole          #+#    #+#             */
-/*   Updated: 2020/12/28 16:41:30 by junseole         ###   ########.fr       */
+/*   Updated: 2020/12/28 21:16:26 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(char *src)
 	while (src[len] != '\0')
 		len++;
 	ret = (char *)malloc(len + 1);
-	if(!ret)
+	if (!ret)
 		return (0);
 	ret[len] = 0;
 	while (len >= 0)

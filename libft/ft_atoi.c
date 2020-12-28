@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:42:03 by junseole          #+#    #+#             */
-/*   Updated: 2020/12/28 17:15:04 by junseole         ###   ########.fr       */
+/*   Updated: 2020/12/28 21:16:33 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_atoi(char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		if(result * sign > 2147483647)
+		if (result * sign > 2147483647)
 			return (-1);
 		else if (result * sign < -2147483648)
 			return (0);
