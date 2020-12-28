@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:42:03 by junseole          #+#    #+#             */
-/*   Updated: 2020/12/23 18:42:20 by junseole         ###   ########.fr       */
+/*   Updated: 2020/12/28 17:15:04 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 int		ft_atoi(char *str)
 {
-	int i;
-	int result;
+	int			sign;
+	long long	result;
 
 	result = 0;
-	i = 0;
-	while (*str == '\t' || *str == '\n'
-			|| *str == '\v' || *str == '\f'
-			|| *str == '\r' || *str == ' ')
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	while (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			i++;
+			sign *= -1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		result *= 10;
-		result += (*str - '0');
+		if(result * sign > 2147483647)
+			return (-1);
+		else if (result * sign < -2147483648)
+			return (0);
+		else
+			result = result * 10 + (*str - '0');
 		str++;
 	}
-	if (i % 2 == 1)
-		return ((-1) * result);
-	return (result);
+	return (sign * result);
 }
-//예외처리 해야됨

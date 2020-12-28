@@ -6,13 +6,13 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:32:48 by junseole          #+#    #+#             */
-/*   Updated: 2020/12/23 16:31:58 by junseole         ###   ########.fr       */
+/*   Updated: 2020/12/28 20:30:36 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strlen(char *str)
+int		ft_strlen(const char *str)
 {
 	int i;
 
