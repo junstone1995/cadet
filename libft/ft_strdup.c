@@ -6,13 +6,13 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 23:31:08 by junseole          #+#    #+#             */
-/*   Updated: 2020/12/28 21:16:26 by junseole         ###   ########.fr       */
+/*   Updated: 2020/12/28 21:23:40 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	int		len;
 	char	*ret;
