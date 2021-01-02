@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 13:40:40 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/01 18:21:24 by junseole         ###   ########.fr       */
+/*   Created: 2021/01/02 21:33:04 by junseole          #+#    #+#             */
+/*   Updated: 2021/01/02 21:35:02 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+t_list		*ft_lstlast(t_list *lst)
 {
-	size_t i;
-	size_t len;
-
-	if (!src)
+	if (lst == 0)
 		return (0);
-	len = ft_strlen(src);
-	if (dst == 0 || size == 0)
-		return (len);
-	i = 0;
-	while (src[i] != '\0' && i + 1 < size)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (len);
+	while(lst->next)
+		lst = lst->next;
+	return (lst);
 }

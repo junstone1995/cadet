@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 13:40:40 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/01 18:21:24 by junseole         ###   ########.fr       */
+/*   Created: 2021/01/01 23:03:06 by junseole          #+#    #+#             */
+/*   Updated: 2021/01/01 23:36:55 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+static void		re_nbr(int n, int fd)
 {
-	size_t i;
-	size_t len;
-
-	if (!src)
-		return (0);
-	len = ft_strlen(src);
-	if (dst == 0 || size == 0)
-		return (len);
-	i = 0;
-	while (src[i] != '\0' && i + 1 < size)
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
 	{
-		dst[i] = src[i];
-		i++;
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = n * -1;
+		}
+		if (n > 0)
+		{
+			re_nbr(n / 10, fd);
+		}
+		ft_putchar_fd((n % 10) + '0', fd);
 	}
-	dst[i] = 0;
-	return (len);
+}
+
+void			ft_putnbr_fd(int n, int fd)
+{
+	if (fd < 0)
+		return ;
+	re_nbr(n, fd);
 }
