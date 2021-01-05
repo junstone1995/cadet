@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 21:33:04 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/02 21:35:02 by junseole         ###   ########.fr       */
+/*   Updated: 2021/01/05 17:58:20 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list		*ft_lstlast(t_list *lst)
 {
 	if (lst == 0)
 		return (0);
-	while(lst->next)
+	while (lst->next)
 		lst = lst->next;
 	return (lst);
 }
