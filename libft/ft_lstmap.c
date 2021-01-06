@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 22:10:47 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/02 22:41:51 by junseole         ###   ########.fr       */
+/*   Updated: 2021/01/06 16:56:18 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list *tmp;
 	t_list *ret;
 
-	if (lst == 0)
-		return (0);
-	if (!(ret = ft_lstnew(f(lst->content))))
-		return (0);
+	ret = 0;
 	while (lst)
 	{
 		tmp = ft_lstnew(f(lst->content));
