@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 23:03:06 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/01 23:36:55 by junseole         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:57:58 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		re_nbr(int n, int fd)
 			ft_putchar_fd('-', fd);
 			n = n * -1;
 		}
-		if (n > 0)
+		if (n > 9)
 		{
 			re_nbr(n / 10, fd);
 		}
