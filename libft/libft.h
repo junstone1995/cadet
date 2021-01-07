@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 16:32:28 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/05 18:03:27 by junseole         ###   ########.fr       */
+/*   Updated: 2021/01/07 19:14:09 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char			*ft_strdup(const char *src);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strnstr(const char *haystack, const char *needle,
-							size_t len);
+				size_t len);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -66,6 +66,6 @@ size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
-							void (*del)(void *));
+				void (*del)(void *));
 
 #endif

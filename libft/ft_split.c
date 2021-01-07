@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 17:19:35 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/01 23:38:10 by junseole         ###   ########.fr       */
+/*   Updated: 2021/01/07 20:10:49 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,43 +31,31 @@ static size_t	get_word_cnt(char const *s, char c)
 	return (cnt);
 }
 
-static void		*ft_free(char **ret)
-{
-	int i;
-
-	i = 0;
-	while (ret[i])
-		free(ret[i++]);
-	free(ret);
-	ret = 0;
-	return (0);
-}
-
 char			**ft_split(char const *s, char c)
 {
-	char		**ret;
-	char		*tmp;
-	size_t		index;
-	size_t		size;
+	char	**ret;
+	char	*from;
+	size_t	idx;
+	size_t	size;
 
-	if (!s || !(ret = (char **)malloc(sizeof(char *) * get_word_cnt(s, c) + 1)))
+	if (!s || !(ret = (char**)malloc(sizeof(char*) * (get_word_cnt(s, c) + 1))))
 		return (0);
-	index = 0;
+	idx = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			tmp = (char *)s;
+			from = (char*)s;
 			while (*s && *s != c)
 				++s;
-			size = s - tmp + 1;
-			if (!(ret[index] = (char *)malloc(size)))
-				return (ft_free(ret));
-			ft_strlcpy(ret[index++], tmp, size);
+			size = s - from + 1;
+			if (!(ret[idx] = (char*)malloc(size)))
+				return (0);
+			ft_strlcpy(ret[idx++], from, size);
 		}
 		else
-			s++;
+			++s;
 	}
-	ret[index] = 0;
+	ret[idx] = 0;
 	return (ret);
 }
