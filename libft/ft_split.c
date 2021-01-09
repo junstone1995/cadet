@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 17:19:35 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/07 20:10:49 by junseole         ###   ########.fr       */
+/*   Updated: 2021/01/09 14:34:14 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ static size_t	get_word_cnt(char const *s, char c)
 	return (cnt);
 }
 
+static char		**free_arr(char **ret)
+{
+	size_t i;
+
+	i = 0;
+	while (ret[i])
+	{
+		free(ret[i]);
+		i++;
+	}
+	free(ret);
+	ret = 0;
+	return (0);
+}
+
 char			**ft_split(char const *s, char c)
 {
 	char	**ret;
@@ -50,7 +65,7 @@ char			**ft_split(char const *s, char c)
 				++s;
 			size = s - from + 1;
 			if (!(ret[idx] = (char*)malloc(size)))
-				return (0);
+				return (free_arr(ret));
 			ft_strlcpy(ret[idx++], from, size);
 		}
 		else
