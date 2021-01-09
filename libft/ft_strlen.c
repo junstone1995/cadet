@@ -6,15 +6,15 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 17:32:48 by junseole          #+#    #+#             */
-/*   Updated: 2020/12/28 20:30:36 by junseole         ###   ########.fr       */
+/*   Updated: 2021/01/09 14:50:41 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strlen(const char *str)
+size_t		ft_strlen(const char *str)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	while (*str)
