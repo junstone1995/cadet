@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 18:31:12 by junseole          #+#    #+#             */
-/*   Updated: 2021/02/20 23:25:34 by junseole         ###   ########.fr       */
+/*   Created: 2021/02/23 14:45:25 by junseole          #+#    #+#             */
+/*   Updated: 2021/02/23 17:27:11 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,48 +24,28 @@ size_t		ft_strlen(const char *s)
 	return (ret);
 }
 
-t_buffer	*new_buffer(int fd)
+t_buf		*new_buf(int fd)
 {
-	t_buffer *ret;
+	t_buf *ret;
 
-	if (!(ret = malloc(sizeof(t_buffer))))
+	if (!(ret = malloc(sizeof(t_buf))))
 		return (0);
 	ret->fd = fd;
-	ret->next = 0;
 	ret->buf[0] = 0;
+	ret->next = 0;
 	return (ret);
 }
 
-t_buffer	*find_buffer(t_buffer *buffer, int fd)
+t_buf		*find_buf(int fd, t_buf *buf)
 {
-	if (buffer->fd == fd)
-		return (buffer);
-	if (!buffer->next)
-		return (buffer->next = new_buffer(fd));
-	return (find_buffer(buffer->next, fd));
+	if (buf->fd == fd)
+		return (buf);
+	if (!buf->next)
+		return (buf->next = new_buf(fd));
+	return (find_buf(fd, buf->next));
 }
 
-void		remove_buffer(t_buffer **head, int fd)
-{
-	t_buffer *prev;
-	t_buffer *curr;
-
-	prev = *head;
-	if (prev->fd == fd)
-	{
-		curr = prev->next;
-		free(prev);
-		*head = curr;
-		return ;
-	}
-	while (prev->next->fd != fd)
-		prev = prev->next;
-	curr = find_buffer(*head, fd);
-	prev->next = curr->next;
-	free(curr);
-}
-
-int			resize(char **line, size_t len)
+int			resize(size_t len, char **line)
 {
 	char	*new_line;
 	size_t	i;
@@ -79,7 +59,28 @@ int			resize(char **line, size_t len)
 		i++;
 	}
 	new_line[i] = 0;
-	free(*line);
+	free (*line);
 	*line = new_line;
 	return (1);
 }
+
+void		erase_buf(int fd, t_buf **head)
+{
+	t_buf *pre;
+	t_buf *cur;
+
+	pre = *head;
+	if (pre->fd == fd)
+	{
+		cur = pre->next;
+		free(pre);
+		*head = cur;
+		return ;
+	}
+	while (pre->next->fd != fd)
+		pre = pre->next;
+	cur = find_buf(fd, *head);
+	pre->next = cur->next;
+	free(cur);
+}
+

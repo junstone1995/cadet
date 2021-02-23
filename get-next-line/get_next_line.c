@@ -5,62 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 17:51:25 by junseole          #+#    #+#             */
-/*   Updated: 2021/02/20 23:31:56 by junseole         ###   ########.fr       */
+/*   Created: 2021/02/23 14:33:54 by junseole          #+#    #+#             */
+/*   Updated: 2021/02/23 17:24:27 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		read_buf(t_buffer *buffer, char **line)
+int		read_buf(t_buf *buf, char **line)
 {
 	size_t	i;
 	size_t	j;
-	int		found;
+	int		find;
 
 	i = ft_strlen(*line);
-	if (!resize(line, i))
+	if (!(resize(i, line)))
 		return (-1);
-	found = 0;
+	find = 0;
 	j = 0;
-	while (buffer->buf[j])
+	while (buf->buf[j])
 	{
-		(*line)[i++] = buffer->buf[j];
-		if (buffer->buf[j++] == '\n')
+		(*line)[i++] = buf->buf[j];
+		if (buf->buf[j++] == '\n')
 		{
 			i--;
-			found = 1;
-			break ;
+			find = 1;
+			break;
 		}
 	}
 	(*line)[i] = 0;
 	i = 0;
-	while (buffer->buf[j])
-		buffer->buf[i++] = buffer->buf[j++];
-	buffer->buf[i] = 0;
-	return (found);
+	while (buf->buf[j])
+		buf->buf[i++] = buf->buf[j++];
+	buf->buf[i] = 0;
+	return (find);
 }
 
 int		get_next_line(int fd, char **line)
 {
-	static t_buffer *head;
-	t_buffer		*buffer;
+	static t_buf	*head;
+	t_buf			*buf;
 	int				size;
-	int				found;
+	int				find;
 
-	if (BUFFER_SIZE <= 0 || !line
-			|| (!head && !(head = new_buffer(fd)))
-			|| !(buffer = find_buffer(head, fd)))
+	if (BUFFER_SIZE <= 0 || !line || fd < 0
+				|| (!head && !(head = new_buf(fd)))
+				|| !(buf = find_buf(fd, head)))
 		return (-1);
 	*line = 0;
-	if ((found = read_buf(buffer, line)))
-		return (found);
-	while ((size = read(fd, buffer->buf, BUFFER_SIZE)) > 0)
+	if ((find = read_buf(buf,line)))
+		return (find);
+	while ((size = read(fd, buf->buf, BUFFER_SIZE)) > 0)
 	{
-		buffer->buf[size] = 0;
-		if ((found = read_buf(buffer, line)))
-			return (found);
+		buf->buf[size] = 0;
+		if ((find = read_buf(buf, line)))
+			return (find);
 	}
-	remove_buffer(&head, fd);
+	erase_buf(fd, &head);
 	return (size);
 }

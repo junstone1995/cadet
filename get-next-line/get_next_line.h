@@ -5,28 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 18:08:30 by junseole          #+#    #+#             */
-/*   Updated: 2021/02/19 18:08:38 by junseole         ###   ########.fr       */
+/*   Created: 2021/02/23 14:34:23 by junseole          #+#    #+#             */
+/*   Updated: 2021/02/23 17:24:44 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <unistd.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-typedef struct		s_buffer
+typedef struct		s_buf
 {
 	int				fd;
 	char			buf[BUFFER_SIZE + 1];
-	struct s_buffer	*next;
-}					t_buffer;
+	struct s_buf	*next;
+}					t_buf;
 
 size_t				ft_strlen(const char *s);
-t_buffer			*new_buffer(int fd);
-t_buffer			*find_buffer(t_buffer *buffer, int fd);
-void				remove_buffer(t_buffer **head, int fd);
-int					resize(char **line, size_t len);
+t_buf				*new_buf(int fd);
+t_buf				*find_buf(int fd, t_buf *buf);
+int					read_buf(t_buf *buf, char **line);
+int					resize(size_t len, char **line);
+void				erase_buf(int fd, t_buf **head);
 int					get_next_line(int fd, char **line);
+
 #endif
