@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 14:34:23 by junseole          #+#    #+#             */
-/*   Updated: 2021/03/04 02:12:39 by junseole         ###   ########.fr       */
+/*   Created: 2021/03/04 01:15:06 by junseole          #+#    #+#             */
+/*   Updated: 2021/03/04 02:13:24 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -32,8 +32,8 @@ size_t				ft_strlen(const char *s);
 t_buf				*new_buf(int fd);
 t_buf				*find_buf(int fd, t_buf *buf);
 int					read_buf(t_buf *buf, char **line);
-void				erase_buf(int fd, t_buf **head);
 int					resize(size_t len, t_buf *buf, char **line);
+void				erase_buf(int fd, t_buf **head);
 int					get_next_line(int fd, char **line);
 
 #endif

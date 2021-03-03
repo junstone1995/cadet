@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 14:33:54 by junseole          #+#    #+#             */
-/*   Updated: 2021/03/04 02:05:54 by junseole         ###   ########.fr       */
+/*   Created: 2021/03/04 01:14:55 by junseole          #+#    #+#             */
+/*   Updated: 2021/03/04 03:31:52 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t		size_check(const char *s)
 {
@@ -63,7 +63,7 @@ int			get_next_line(int fd, char **line)
 	int				size;
 	int				find;
 
-	if (BUFFER_SIZE <= 0 || !line || fd < 0 || fd > 32
+	if (BUFFER_SIZE <= 0 || !line || fd < 0 || fd > 999
 				|| (!head && !(head = new_buf(fd)))
 				|| !(buf = find_buf(fd, head)))
 		return (-1);

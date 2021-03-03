@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 14:45:25 by junseole          #+#    #+#             */
-/*   Updated: 2021/03/04 02:16:10 by junseole         ###   ########.fr       */
+/*   Created: 2021/03/04 01:15:18 by junseole          #+#    #+#             */
+/*   Updated: 2021/03/04 03:01:56 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t		ft_strlen(const char *s)
 {
@@ -19,8 +19,11 @@ size_t		ft_strlen(const char *s)
 	if (!s)
 		return (0);
 	ret = 0;
-	while (*s++)
+	while (*s)
+	{
+		s++;
 		ret++;
+	}
 	return (ret);
 }
 
