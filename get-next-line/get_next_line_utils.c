@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:45:25 by junseole          #+#    #+#             */
-/*   Updated: 2021/02/23 17:27:11 by junseole         ###   ########.fr       */
+/*   Updated: 2021/03/03 19:50:00 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ t_buf		*find_buf(int fd, t_buf *buf)
 	return (find_buf(fd, buf->next));
 }
 
-int			resize(size_t len, char **line)
+int			resize(size_t len, size_t len2, char **line)
 {
 	char	*new_line;
 	size_t	i;
 
-	if (!(new_line = malloc(len + BUFFER_SIZE + 1)))
+	if (!(new_line = malloc(len + len2 + 1)))
 		return (0);
 	i = 0;
 	while (i < len)
