@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:33:54 by junseole          #+#    #+#             */
-/*   Updated: 2021/03/04 02:05:54 by junseole         ###   ########.fr       */
+/*   Updated: 2021/03/04 19:09:39 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			get_next_line(int fd, char **line)
 	int				size;
 	int				find;
 
-	if (BUFFER_SIZE <= 0 || !line || fd < 0 || fd > 32
+	if (BUFFER_SIZE <= 0 || !line || fd < 0 || fd > 999
 				|| (!head && !(head = new_buf(fd)))
 				|| !(buf = find_buf(fd, head)))
 		return (-1);
