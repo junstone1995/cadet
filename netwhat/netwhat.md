@@ -200,7 +200,7 @@ DNS(Domain Name System)은 Internet의 전화번호부로 비유되는데, DNS s
 
 
 
-
+**ICMP**는 TCP/IP에서 IP 패킷을 처리할 때 발생되는 문제를 알려주는 프로토콜이다
 
 
 
