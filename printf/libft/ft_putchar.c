@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 15:29:58 by junseole          #+#    #+#             */
-/*   Updated: 2021/04/29 15:29:04 by junseole         ###   ########.fr       */
+/*   Created: 2021/04/29 16:11:30 by junseole          #+#    #+#             */
+/*   Updated: 2021/04/29 16:11:57 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#indef FT_PRINTF_H
-# define FT_PRINTF_H
-
-# include <stdarg.h>
-# include "./libft/libft.h"
-# include <stdio.h>
-
-# define TYPE "csdiupxX%"
-
-typedef struct	s_info
+int		ft_putchar(int c)
 {
-	int			minus;
-	int			zero;
-	int			width;
-	int			precsion;
-	int			nbr_base;
-	int			nbr_sign;
-	char		type;
-}				t_info
-
-#endif
+	return (write(1, &c, 1));
+}

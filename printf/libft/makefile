@@ -3,6 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 HEADER = libft.h
 SRCS = ft_atoi.c \
+			ft_putchar.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \

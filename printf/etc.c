@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   etc.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 15:29:58 by junseole          #+#    #+#             */
-/*   Updated: 2021/04/29 15:29:04 by junseole         ###   ########.fr       */
+/*   Created: 2021/04/29 15:10:29 by junseole          #+#    #+#             */
+/*   Updated: 2021/04/29 15:10:58 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#indef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_print.h"
 
-# include <stdarg.h>
-# include "./libft/libft.h"
-# include <stdio.h>
-
-# define TYPE "csdiupxX%"
-
-typedef struct	s_info
+void	init_info(t_info *info)
 {
-	int			minus;
-	int			zero;
-	int			width;
-	int			precsion;
-	int			nbr_base;
-	int			nbr_sign;
-	char		type;
-}				t_info
-
-#endif
+	info->minus = 0;
+	info->zero = 0;
+	info->width = 0;
+	info->percsion = 0;
+	info->nbr_base = 0;
+	info->nbr_sign = 1;
+	info->type = 0;
+}
