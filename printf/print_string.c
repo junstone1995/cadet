@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_string.c                                    :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:24:59 by junseole          #+#    #+#             */
-/*   Updated: 2021/04/29 16:59:28 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/05 17:01:50 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,22 @@ int		check_width_str(char **buf, t_info *info)
 
 	if (info->width <= (int)ft_strlen(*buf))
 		return ((int)ft_strlen(*buf));
-
+	width = (char *)malloc(sizeof(char) * (info->width - ft_strlen(*buf) + 1));
+	i = 0;
+	while ((size_t)i < info->width - ft_strlen(*buf))
+	{
+		if (info->zero == 1)
+			width[i] = 0;
+		else
+			width[i] = ' ';
+		i++;
+	}
+	width[i] = '\0';
+	if (info->minus == 0)
+		*buf = ft_strjoin(width, *buf);
+	else
+		*buf = ft_strjoin(*buf, width);
+	return (info->width);
 }
 
 int		print_string(char *str, t_info *info)
