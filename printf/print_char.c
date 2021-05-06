@@ -6,28 +6,13 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:00:20 by junseole          #+#    #+#             */
-/*   Updated: 2021/04/29 16:13:35 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/06 16:51:47 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_char(int c, t_info *info)
-{
-	int ret;
-
-	ret = 0;
-	if (info->type == '%' && info->minus == 1)
-		info->zero = 0;
-	if (info->minus == 1)
-		ret += ft_putchar(c);
-	ret += put_width(info->put_width, info->zero);
-	if (info->minus == 0)
-		ret += ft_putchar(c);
-	return (ret);
-}
-
-int		put_width(int width, int zero)
+int		push_width(int width, int zero)
 {
 	int ret;
 	int len;
@@ -43,5 +28,20 @@ int		put_width(int width, int zero)
 		len++;
 		ret++;
 	}
+	return (ret);
+}
+
+int		print_char(int c, t_info *info)
+{
+	int ret;
+
+	ret = 0;
+	if (info->type == '%' && info->minus == 1)
+		info->zero = 0;
+	if (info->minus == 1)
+		ret += ft_putchar(c);
+	ret += push_width(info->width, info->zero);
+	if (info->minus == 0)
+		ret += ft_putchar(c);
 	return (ret);
 }

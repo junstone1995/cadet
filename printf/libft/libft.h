@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 16:32:28 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/05 16:05:20 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/06 16:43:19 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-int					ft_putchar(int c)
-int					ft_putstr(char *str)
+int					ft_putchar(int c);
+int					ft_putstr(char *str);
 void				*ft_memset(void *b, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
