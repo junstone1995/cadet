@@ -6,7 +6,11 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:27:06 by junseole          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/04/30 19:00:39 by junseole         ###   ########.fr       */
+=======
+/*   Updated: 2021/05/06 16:51:47 by junseole         ###   ########.fr       */
+>>>>>>> e7be9dcf87a1c0d7de3c95e6977277117a489f01
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +26,7 @@ int		print_type(va_list ap, t_info *info)
 	else if (info->type == '%')
 		ret = print_char('%', info);
 	else if (info->type == 's')
-		ret = print_string(va_arg(ap, char *), info);
+		ret = print_str(va_arg(ap, char *), info);
 	else if (info->type == 'd' || info->type == 'i')
 		ret = print_nbr(va_arg(ap, int), info);
 	else if (info->type == 'x' || info->type == 'X' || info->type == 'u')
@@ -32,7 +36,7 @@ int		print_type(va_list ap, t_info *info)
 	return (ret);
 }
 
-void	check_width_and_prec(va_list ap, char c, t_info *info)
+void	check_width_and_precsion(va_list ap, char c, t_info *info)
 {
 	if (ft_isdigit(c))
 	{
@@ -66,16 +70,14 @@ void	check_info(va_list ap, char c, t_info *info)
 	else if (c == '.')
 		info->precsion = 0;
 	else if (ft_isdigit(c) || c == '*')
-		check_width_and_prec(ap, c, info);
+		check_width_and_precsion(ap, c, info);
 }
 
 int		parse(va_list ap, char *format)
 {
-	int		i;
 	int		ret;
 	t_info	*info;
 
-	i = 0;
 	ret = 0;
 	if (!(info = malloc(sizeof(t_info))))
 		return (-1);
@@ -84,7 +86,7 @@ int		parse(va_list ap, char *format)
 		if (*format == '%')
 		{
 			init_info(info);
-			while (++(*format) && !(ft_strchr(TYPE, format[i])))
+			while (++(*format) && !(ft_strchr(TYPE, *format)))
 				check_info(ap, *format, info);
 			info->type = *format++;
 			if ((info->minus == 1 || info->precsion > -1) && info->type != '%')
