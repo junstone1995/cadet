@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:27:06 by junseole          #+#    #+#             */
-/*   Updated: 2021/04/29 15:57:42 by junseole         ###   ########.fr       */
+/*   Updated: 2021/04/30 19:00:39 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	check_width_and_prec(va_list ap, char c, t_info *info)
 {
 	if (ft_isdigit(c))
 	{
-		if (info->prec == -1)
+		if (info->precsion == -1)
 			info->width = info->width * 10 + c - 48;
 		else
-			info->prec = info->prec * 10 + c - 48;
+			info->precsion = info->precsion * 10 + c - 48;
 	}
 	else if (c == '*')
 	{
-		if (info->prec == -1)
+		if (info->precsion == -1)
 		{
 			info->width = va_arg(ap, int);
 			if (info->width < 0)
@@ -53,18 +53,18 @@ void	check_width_and_prec(va_list ap, char c, t_info *info)
 			}
 		}
 		else
-			info->prec = va_arg(ap, int);
+			info->precsion = va_arg(ap, int);
 	}
 }
 
 void	check_info(va_list ap, char c, t_info *info)
 {
-	if (c == '0' && info->width == 0 && info->prec == -1)
+	if (c == '0' && info->width == 0 && info->precsion == -1)
 		info->zero = 1;
 	else if (c == '-')
 		info->minus = 1;
 	else if (c == '.')
-		info->prec = 0;
+		info->precsion = 0;
 	else if (ft_isdigit(c) || c == '*')
 		check_width_and_prec(ap, c, info);
 }
@@ -87,7 +87,7 @@ int		parse(va_list ap, char *format)
 			while (++(*format) && !(ft_strchr(TYPE, format[i])))
 				check_info(ap, *format, info);
 			info->type = *format++;
-			if ((info->minus == 1 || info->prec > -1) && info->type != '%')
+			if ((info->minus == 1 || info->precsion > -1) && info->type != '%')
 				info->zero = 0;
 			ret += print_type(ap, info);
 		}
@@ -101,7 +101,7 @@ int		parse(va_list ap, char *format)
 int		ft_printf(const char *format, ...)
 {
 	int		ret;
-	va_list ap;
+	va_list	ap;
 
 	va_start(ap, format);
 	ret = parse(ap, (char *)format);
