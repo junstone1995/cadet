@@ -6,13 +6,13 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:22:41 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/06 17:10:42 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/08 21:43:09 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		prefix_join_pointer(char **bur)
+int		prefix_join_pointer(char **buf)
 {
 	*buf = ft_strjoin("0x", *buf);
 	return (ft_strlen(*buf));
@@ -41,7 +41,7 @@ int		check_minus2(int buf_len, t_info *info, char **buf)
 	{
 		if (buf_len >= info->width)
 		{
-			*buf = ft_strjoin("-", *buf, 2);
+			*buf = ft_strjoin("-", *buf);
 			cnt = 1;
 		}
 		else if (buf_len < info->width)
@@ -50,7 +50,7 @@ int		check_minus2(int buf_len, t_info *info, char **buf)
 	return (cnt);
 }
 
-int		check_precsion_str(unsigned long long nbr, t_info *info, char **bur)
+int		check_precsion_str(unsigned long long nbr, t_info *info, char **buf)
 {
 	int buf_len;
 	int ret;
@@ -76,7 +76,7 @@ int		check_precsion_str(unsigned long long nbr, t_info *info, char **bur)
 	{
 		(*buf)[ret - i] = ft_baseset(info->type)[nbr % info->nbr_base];
 		nbr /= info-> nbr_base;
-		i++
+		i++;
 	}
 	return (buf_len);
 }
@@ -98,8 +98,7 @@ int		print_nbr(unsigned long long nbr, t_info *info)
 	buf_len += check_minus(info, &buf);
 	if (info->type == 'p')
 		buf_len = prefix_join_pointer(&buf);
-	ret = check_width_str(&buf,info);
-	ret = check_width_str(&buf, info);
+	ret = push_str(&buf, info);
 	ret += check_minus2(buf_len, info, &buf);
 	ft_putstr(buf);
 	free(buf);
