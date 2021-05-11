@@ -2,8 +2,6 @@
 
 int main()
 {
-	int nbr;
-
-	nbr = printf("%-10.3d",12345);
-	printf("%d",nbr);
+ printf("%0-4.%\n");
+ ft_printf("%0-4.%");
 }

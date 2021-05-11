@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:45:14 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/10 20:08:33 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:35:48 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ int		print_type(va_list argp, t_property *prop)
 	else if (prop->type == 's')
 		ret = print_str(va_arg(argp, char *), prop);
 	else if (prop->type == 'd' || prop->type == 'i')
-		ret = print_nbr(va_arg(argp, int), prop);
+		ret = print_nbr(va_arg(argp, int), prop, "0123456789");
+	else if (prop->type == 'u')
+		ret = print_nbr(va_arg(argp, unsigned int), prop, "0123456789");
+	else if (prop->type == 'x')
+		ret = print_nbr(va_arg(argp, unsigned int), prop, "0123456789abcdef");
+	else if (prop->type == 'X')
+		ret = print_nbr(va_arg(argp, unsigned int), prop, "0123456789ABCDEF");
+	else if (prop->type == 'p')
+		ret = print_nbr(va_arg(argp, unsigned long long), prop, "0123456789abcdef");
 	return (ret);
 }
 
@@ -82,6 +90,10 @@ int		read_fmt(va_list argp, char *fmt)
 			while (*(++fmt) && !(ft_strchr(TYPE, (char)*fmt)))
 				check_prot(argp, (char)*fmt, prop);
 			prop->type = *fmt++;
+			if ((prop->minus == 1 || prop->prec > -1) && prop->type != '%')
+				prop->zero = 0;
+			if (prop->type == 'p' || prop->type == 'x' || prop->type == 'X')
+				prop->base = 16;
 			ret += print_type(argp, prop);
 		}
 		else
