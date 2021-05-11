@@ -8,14 +8,14 @@ SRCS		= ft_printf.c \
 				print_str.c \
 				print_nbr.c
 OBJS		= $(SRCS:.c=.o)
-INCS		= .
+HEADER		= ft_printf.h
 RM			= rm -f
 LIBC		= ar rc
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
-.c.o :
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
+.c.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME) : $(OBJS)
 	make all -C $(LIBFT)/

@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 20:10:11 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/11 18:41:46 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/11 19:08:01 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		print_nbr(unsigned long long nbr, t_property *prop, char *base_set)
 		prop->sign = 1;
 		nbr *= -1;
 	}
-	str = ft_ulltoa(nbr, base_set, prop);
 	base_len = ft_nbrlen(nbr, prop);
+	str = ft_ulltoa(nbr, base_set, prop, base_len);
 	read_nbr(&str, prop, base_len);
 	if (prop->type == 'p')
 		add_prefix(&str);

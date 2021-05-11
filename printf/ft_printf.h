@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:45:50 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/11 18:41:53 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/11 19:08:30 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			check_width_prec(va_list argp, char c, t_property *prop);
 int				print_type(va_list argp, t_property *prop);
 void			init_prop(t_property *prop);
 int				ft_nbrlen(unsigned long long nbr, t_property *prop);
-char			*ft_ulltoa(unsigned long long nbr, char *base, t_property *prop);
+char			*ft_ulltoa(unsigned long long nbr, char *base, t_property *prop, int base_len);
 int				print_char(int c, t_property *prop);
 int				print_width(t_property *prop);
 int				print_str(char *str, t_property *prop);
