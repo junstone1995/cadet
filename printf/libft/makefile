@@ -52,6 +52,7 @@ BOBJS = $(BSRCS:.c=.o)
 
 all: $(NAME)
 
+
 $(NAME): $(OBJS)
 	ar cr $@ $^
 
