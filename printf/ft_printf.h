@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:45:50 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/11 19:08:30 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:07:39 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ int				print_nbr(unsigned long long nbr, t_property *prop, char *base_set);
 int				read_nbr(char **str, t_property *prop, int base_len);
 int				check_nbr_width(char **str, t_property *prop);
 void			add_minus(char **str, t_property *prop, int base_len);
-void			add_prefix(char **str);
+int				add_prefix(char **str);
 #endif

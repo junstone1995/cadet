@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 18:16:05 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/10 20:00:10 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:59:13 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int		check_width_str(char **str2, t_property *prop)
 	}
 	width[i] = '\0';
 	if (prop->minus == 1)
-		*str2 = ft_strjoin(*str2,width);
+		*str2 = ft_strjoin(*str2, width, 3);
 	else
-		*str2 = ft_strjoin(width,*str2);
+		*str2 = ft_strjoin(width, *str2, 3);
 	return (prop->width);
 }
 

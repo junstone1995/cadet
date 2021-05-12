@@ -6,13 +6,13 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:33:26 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/01 23:37:48 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/12 18:01:43 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2, int flag)
 {
 	char	*str;
 	size_t	s1_len;
@@ -28,5 +28,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(str, s1, s1_len);
 	ft_memcpy(str + s1_len, s2, s2_len);
 	str[s1_len + s2_len] = 0;
+	if (flag == 1 || flag == 3)
+		free(s1);
+	if (flag == 2 || flag == 3)
+		free(s2);
 	return (str);
 }

@@ -6,23 +6,25 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 20:10:11 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/11 19:08:01 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:59:48 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	add_prefix(char **str)
+int		add_prefix(char **str)
 {
-	*str = ft_strjoin("0x",*str);
+	*str = ft_strjoin("0x",*str, 2);
+	return (ft_strlen(*str));
 }
 
 void	add_minus(char **str, t_property *prop, int base_len)
 {
+
 	if (prop->sign == 1 && prop->zero == 1)
 	{
 		if (base_len >= prop->width)
-			*str = ft_strjoin("-",*str);
+			*str = ft_strjoin("-", *str, 2);
 		else
 			*str[0] = '-';
 	}
@@ -48,9 +50,9 @@ int		check_nbr_width(char **str, t_property *prop)
 	}
 	width[i] = '\0';
 	if (prop->minus == 1)
-		*str = ft_strjoin(*str,width);
+		*str = ft_strjoin(*str, width, 1);
 	else
-		*str = ft_strjoin(width,*str);
+		*str = ft_strjoin(width, *str, 2);
 	return (0);
 }
 
@@ -70,11 +72,11 @@ int		read_nbr(char **str, t_property *prop, int base_len)
 			i++;
 		}
 		prec[i] = '\0';
-		*str = ft_strjoin(prec, *str);
+		*str = ft_strjoin(prec, *str, 3);
 	}
 	if (prop->sign == 1 && prop->zero == 0)
 	{
-		*str = ft_strjoin("-",*str);
+		*str = ft_strjoin("-",*str, 2);
 	}
 	return (0);
 }
@@ -95,7 +97,7 @@ int		print_nbr(unsigned long long nbr, t_property *prop, char *base_set)
 	str = ft_ulltoa(nbr, base_set, prop, base_len);
 	read_nbr(&str, prop, base_len);
 	if (prop->type == 'p')
-		add_prefix(&str);
+			base_len = add_prefix(&str);
 	check_nbr_width(&str, prop);
 	add_minus(&str, prop, base_len);
 	ret = ft_strlen(str);
