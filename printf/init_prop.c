@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:30:44 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/11 19:13:37 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/13 11:57:03 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ int		ft_nbrlen(unsigned long long nbr, t_property *prop)
 	return (i);
 }
 
-char		*ft_ulltoa(unsigned long long nbr, char *base, t_property *prop, int base_len)
+char	*ft_ulltoa(unsigned long long nbr, char *base,
+					t_property *prop, int base_len)
 {
 	char	*ret;
 
-	if (!(ret = malloc(sizeof(char) * base_len +1)))
+	if (!(ret = malloc(sizeof(char) * base_len + 1)))
 		return (0);
 	ret[base_len] = '\0';
 	while (--base_len >= 0)

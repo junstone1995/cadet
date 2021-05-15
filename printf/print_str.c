@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 18:16:05 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/12 17:59:13 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/13 11:55:17 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		check_width_str(char **str2, t_property *prop)
 	return (prop->width);
 }
 
-char		*read_str(char *str,int prec)
+char	*read_str(char *str, int prec)
 {
 	size_t	str_len;
 	char	*str2;
@@ -50,7 +50,7 @@ char		*read_str(char *str,int prec)
 	if (!(str2 = malloc(sizeof(char) * prec + 1)))
 		return (0);
 	i = 0;
-	while(i < prec)
+	while (i < prec)
 	{
 		str2[i] = str[i];
 		i++;

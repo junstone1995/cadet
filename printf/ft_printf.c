@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:45:14 by junseole          #+#    #+#             */
-/*   Updated: 2021/05/11 18:35:48 by junseole         ###   ########.fr       */
+/*   Updated: 2021/05/13 11:49:36 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int		print_type(va_list argp, t_property *prop)
 	else if (prop->type == 'X')
 		ret = print_nbr(va_arg(argp, unsigned int), prop, "0123456789ABCDEF");
 	else if (prop->type == 'p')
-		ret = print_nbr(va_arg(argp, unsigned long long), prop, "0123456789abcdef");
+		ret = print_nbr(va_arg(argp, unsigned long long)
+								, prop, "0123456789abcdef");
 	return (ret);
 }
 
@@ -57,7 +58,7 @@ void	check_width_prec(va_list argp, char c, t_property *prop)
 			}
 		}
 		else
-			prop->prec = va_arg(argp,int);
+			prop->prec = va_arg(argp, int);
 	}
 }
 
@@ -79,7 +80,6 @@ int		read_fmt(va_list argp, char *fmt)
 	int			ret;
 
 	ret = 0;
-
 	if (!(prop = malloc(sizeof(t_property))))
 		return (-1);
 	while (*fmt)
@@ -108,7 +108,7 @@ int		ft_printf(const char *fmt, ...)
 	va_list	argp;
 	int		ret;
 
-	va_start(argp,fmt);
+	va_start(argp, fmt);
 	ret = read_fmt(argp, (char *)fmt);
 	va_end(argp);
 	return (ret);
