@@ -156,6 +156,8 @@ int		nbr_len(unsigned long long nbr,s_info *info)
 	int i;
 
 	i =0;
+	if (nbr == 0 && info->perc != 0)
+		return (1);
 	while(nbr)
 	{
 		nbr /= info->base;
