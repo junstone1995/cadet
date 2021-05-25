@@ -3,21 +3,24 @@
 #include <stdlib.h>
 #include "get_next_line.h"
 
-int main(void)
+int  main()
 {
-	int		r;
-	char	*line;
+  int ret;
+  char *line;
 
-	line = NULL;
-	printf("===================================================\n");
-	while ((r = get_next_line(&line)) > 0)
-	{
-		printf("%s\n", line);
-		free(line);
-		line = NULL;
-	}
-	printf("%s", line);
-	free(line);
-	line = NULL;
-	printf("===================================================\n");
+  ret = 0;
+  while (get_next_line(&line) > 0)
+  {
+    printf("%d   %s\n", ret, line);
+    free(line);
+    line = NULL;
+  }
+  printf("%d   %s\n", ret, line);
+  free(line);
+  line = NULL;
+  while(1)
+  {
+
+  }
+  return (0);
 }
