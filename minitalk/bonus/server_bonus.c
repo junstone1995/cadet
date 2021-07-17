@@ -1,53 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 21:04:44 by junseole          #+#    #+#             */
-/*   Updated: 2021/07/15 21:08:56 by junseole         ###   ########.fr       */
+/*   Created: 2021/07/15 20:55:51 by junseole          #+#    #+#             */
+/*   Updated: 2021/07/17 18:17:02 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
+#include "server_bonus.h"
 #include <stdio.h>
 
-void	bit_send(int pid, char word, char num)
+void	fnsig(int sig)
 {
-	if (word & num)
-		kill(pid, SIGUSR1);
-	else
-		kill(pid, SIGUSR2);
-	usleep(1000);
-}
+	static char		word = 0;
+	static int		cnt = 0;
 
-void	send_unit(int pid, char word)
-{
-	size_t	i;
-
-	i = 128;
-	while (i > 0)
+	word <<= 1;
+	if (sig == 30)
+		word += 1;
+	if (cnt == 0)
 	{
-		bit_send(pid, word, (int)i);
-		i /= 2;
+		write(1, &word, 1);
+		word = 0;
+		cnt = 0;
 	}
+	usleep(1);
 }
 
-int main(int argc, char **argv)
+int		main(void)
 {
-	int		i;
-	pid_t	pid;
-
-	if (argc == 3)
+	signal(SIGUSR1, (void *)fnsig);
+	signal(SIGUSR2, (void *)fnsig);
+	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
+	while (1)
 	{
-		i = 0;
-		pid = ft_atoi(argv[1]);
-		while (argv[2][i])
-		{
-			send_unit(pid,argv[2][i]);
-			i++;
-		}
+		pause();
 	}
 	return (0);
 }
