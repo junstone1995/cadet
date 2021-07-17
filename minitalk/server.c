@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 20:55:51 by junseole          #+#    #+#             */
-/*   Updated: 2021/07/17 18:19:44 by junseole         ###   ########.fr       */
+/*   Updated: 2021/07/17 19:08:00 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	fnsig(int sig)
 	word <<= 1;
 	if (sig == 30)
 		word += 1;
-	if (cnt == 0)
+	cnt++;
+	if (cnt == 8)
 	{
 		write(1, &word, 1);
 		word = 0;

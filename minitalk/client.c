@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 21:04:44 by junseole          #+#    #+#             */
-/*   Updated: 2021/07/17 18:21:08 by junseole         ###   ########.fr       */
+/*   Updated: 2021/07/17 21:21:07 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 			send_unit(pid, argv[2][i]);
 			i++;
 		}
+		send_unit(pid, '\n');
 	}
 	return (0);
 }
