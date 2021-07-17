@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 21:04:44 by junseole          #+#    #+#             */
-/*   Updated: 2021/07/15 21:08:56 by junseole         ###   ########.fr       */
+/*   Updated: 2021/07/17 18:21:08 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	send_unit(int pid, char word)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		i;
 	pid_t	pid;
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 		pid = ft_atoi(argv[1]);
 		while (argv[2][i])
 		{
-			send_unit(pid,argv[2][i]);
+			send_unit(pid, argv[2][i]);
 			i++;
 		}
 	}

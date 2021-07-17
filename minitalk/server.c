@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 20:55:51 by junseole          #+#    #+#             */
-/*   Updated: 2021/07/15 21:04:13 by junseole         ###   ########.fr       */
+/*   Updated: 2021/07/17 18:19:44 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	fnsig(int sig)
 	usleep(1);
 }
 
-int		main(void)
+int	main(void)
 {
 	signal(SIGUSR1, (void *)fnsig);
 	signal(SIGUSR2, (void *)fnsig);
