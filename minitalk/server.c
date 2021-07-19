@@ -6,12 +6,11 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 20:55:51 by junseole          #+#    #+#             */
-/*   Updated: 2021/07/17 19:08:00 by junseole         ###   ########.fr       */
+/*   Updated: 2021/07/19 18:10:43 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-#include <stdio.h>
 
 void	fnsig(int sig)
 {

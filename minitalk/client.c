@@ -6,12 +6,11 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 21:04:44 by junseole          #+#    #+#             */
-/*   Updated: 2021/07/17 21:21:07 by junseole         ###   ########.fr       */
+/*   Updated: 2021/07/19 18:10:55 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
-#include <stdio.h>
 
 void	bit_send(int pid, char word, char num)
 {
