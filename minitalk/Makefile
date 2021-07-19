@@ -6,13 +6,13 @@
 #    By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 19:03:31 by junseole          #+#    #+#              #
-#    Updated: 2021/07/19 18:59:20 by junseole         ###   ########.fr        #
+#    Updated: 2021/07/19 19:13:03 by junseole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror
-AR = ar rcs
+AR = ar rc
 
 TARGET1 = server
 TARGET2 = client
@@ -23,7 +23,7 @@ S_SRC = server.c \
 C_SRC = client.c \
 		subtool.c
 
-BS_SRC = server_bonus.c \
+BS_SRC = client_bonus.c \
 		subtool.c
 
 OBJS1 = $(S_SRC:.c=.o)
@@ -40,8 +40,7 @@ $(TARGET2): $(OBJS2)
 	$(CC) $(CFLAGS) $^ -o $@
 
 bonus : $(BOBJS1)
-	rm -rf $(TARGET1)
-	$(AR) $(TARGET1) $^
+	$(CC) $(CFLAGS) $^ -o $(TARGET2)
 
 all: $(TARGET1) $(TARGET2)
 
