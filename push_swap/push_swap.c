@@ -6,15 +6,8 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:47:27 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/21 14:49:45 by junseole         ###   ########.fr       */
+/*   Updated: 2021/09/21 21:11:54 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		main(int argc, char **argv)
-{
-	t_node *a;
-	t_node *b;
-
-}
