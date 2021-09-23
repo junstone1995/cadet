@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:27:31 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:38:46 by junseole         ###   ########.fr       */
+/*   Updated: 2021/09/23 23:52:23 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ static void error()
 {
 	ft_putstr("Error\n");
 	exit(0);
+}
+
+int		check_value(int *value, int num, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (value[i] == num)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int		save_value(int *value, char *s, int size)
@@ -31,7 +45,7 @@ int		save_value(int *value, char *s, int size)
 	while (i < cnt)
 	{
 		num = ft_atoi(split_s[i]);
-		if (num >= 2147483648 || num <= -2147483649)
+		if (num >= 2147483648 || num <= -2147483649 || check_value(value, num, size))
 			cnt = -1;
 		value[size++] = (int)num;
 		i++;
