@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 14:47:27 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:46:59 by junseole         ###   ########.fr       */
+/*   Created: 2020/11/26 13:40:40 by junseole          #+#    #+#             */
+/*   Updated: 2021/01/01 18:21:24 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push_start(int *value, int size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_deque a;
-	t_deque b;
-	int		i;
+	size_t i;
+	size_t len;
 
+	if (!src)
+		return (0);
+	len = ft_strlen(src);
+	if (dst == 0 || size == 0)
+		return (len);
 	i = 0;
-	init_deque(&a,size);
-	init_deque(&b,size);
-	while (i < size)
+	while (src[i] != '\0' && i + 1 < size)
 	{
-		add_rear(&a,value[i],size);
+		dst[i] = src[i];
 		i++;
 	}
+	dst[i] = 0;
+	return (len);
 }

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlen2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 14:47:27 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:46:59 by junseole         ###   ########.fr       */
+/*   Created: 2021/09/23 21:30:46 by junseole          #+#    #+#             */
+/*   Updated: 2021/09/23 21:52:00 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push_start(int *value, int size)
+size_t	ft_strlen2(char **str)
 {
-	t_deque a;
-	t_deque b;
-	int		i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	init_deque(&a,size);
-	init_deque(&b,size);
-	while (i < size)
+	while (str[i] != 0)
 	{
-		add_rear(&a,value[i],size);
+		j = 0;
+		while (str[i][j] != '\0')
+		{
+			if (str[i][j] < '0' || str[i][j] > '9')
+			{
+				return (-1);
+			}
+			j++;
+		}
 		i++;
 	}
+	return (i);
 }

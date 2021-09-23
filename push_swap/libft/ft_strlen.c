@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 14:47:27 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:46:59 by junseole         ###   ########.fr       */
+/*   Created: 2020/12/01 17:32:48 by junseole          #+#    #+#             */
+/*   Updated: 2021/09/23 20:44:11 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push_start(int *value, int size)
+size_t		ft_strlen(const char *str)
 {
-	t_deque a;
-	t_deque b;
-	int		i;
+	size_t i;
 
 	i = 0;
-	init_deque(&a,size);
-	init_deque(&b,size);
-	while (i < size)
+	while (*str)
 	{
-		add_rear(&a,value[i],size);
+		str++;
 		i++;
 	}
+	return (i);
 }

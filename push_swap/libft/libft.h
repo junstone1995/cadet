@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 14:47:27 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:46:59 by junseole         ###   ########.fr       */
+/*   Created: 2020/12/23 16:32:28 by junseole          #+#    #+#             */
+/*   Updated: 2021/09/23 21:35:39 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	push_start(int *value, int size)
-{
-	t_deque a;
-	t_deque b;
-	int		i;
+# include <stdlib.h>
+# include <unistd.h>
 
-	i = 0;
-	init_deque(&a,size);
-	init_deque(&b,size);
-	while (i < size)
-	{
-		add_rear(&a,value[i],size);
-		i++;
-	}
-}
+size_t	ft_strlen(const char *str);
+size_t	ft_strlen2(char **str);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	**ft_split(char const *s, char c);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+long long	ft_atoi(const char *str);
+#endif
