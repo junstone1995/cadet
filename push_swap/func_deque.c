@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:24:24 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:46:14 by junseole         ###   ########.fr       */
+/*   Updated: 2021/09/24 15:10:52 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,20 @@ void	add_front(t_deque *q, int value, int size)
 	q->front = (q->front - 1 + size) % size;
 }
 
-int		delete_rear(t_deque *q, int size)
+int	delete_rear(t_deque *q, int size)
 {
-	int tmp = q->value[q->rear];
+	int	tmp;
+
+	tmp = q->value[q->rear];
 	q->rear = (q->rear - 1 + size) % size;
 	return (tmp);
 }
 
-int		delete_front(t_deque *q, int size)
+int	delete_front(t_deque *q, int size)
 {
-	int tmp = q->value[q->front + 1 % size];
+	int	tmp;
+
+	tmp = q->value[q->front + 1 % size];
 	q->front = (q->front + 1) % size;
 	return (tmp);
 }

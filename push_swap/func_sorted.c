@@ -6,20 +6,20 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 22:23:38 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:07:18 by junseole         ###   ########.fr       */
+/*   Updated: 2021/09/24 15:04:38 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		is_ascending(int *value, int size)
+int	is_ascending(int *value, int size)
 {
-	int i;
-	int num;
+	int	i;
+	int	num;
 
 	i = 1;
 	num = value[0];
-	while(i < size)
+	while (i < size)
 	{
 		if (num > value[i])
 			return (0);

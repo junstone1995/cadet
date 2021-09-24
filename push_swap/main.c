@@ -6,21 +6,21 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:27:31 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 23:52:23 by junseole         ###   ########.fr       */
+/*   Updated: 2021/09/24 15:09:27 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void error()
+static void	error(void)
 {
 	ft_putstr("Error\n");
 	exit(0);
 }
 
-int		check_value(int *value, int num, int size)
+int	check_value(int *value, int num, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -32,20 +32,22 @@ int		check_value(int *value, int num, int size)
 	return (0);
 }
 
-int		save_value(int *value, char *s, int size)
+int	save_value(int *value, char *s, int size)
 {
-	char	**split_s;
-	int		cnt;
-	int		i;
+	char		**split_s;
+	int			cnt;
+	int			i;
 	long long	num;
 
-	split_s = ft_split(s,' ');
+	split_s = ft_split(s, ' ');
 	cnt = ft_strlen2(split_s);
 	i = 0;
 	while (i < cnt)
 	{
 		num = ft_atoi(split_s[i]);
-		if (num >= 2147483648 || num <= -2147483649 || check_value(value, num, size))
+		if (num >= 2147483648 || num <= -2147483649)
+			cnt = -1;
+		if (check_value(value, num, size))
 			cnt = -1;
 		value[size++] = (int)num;
 		i++;
@@ -56,11 +58,11 @@ int		save_value(int *value, char *s, int size)
 	return (size);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int		i;
-	int		size;
-	int		*value;
+	int	i;
+	int	size;
+	int	*value;
 
 	value = (int *)malloc(sizeof(int) * 500);
 	if (!value || argc <= 1)
@@ -69,8 +71,7 @@ int		main(int argc, char **argv)
 	size = 0;
 	while (i < argc)
 	{
-		size = save_value(value, argv[i],size);
-
+		size = save_value(value, argv[i], size);
 		if (size == -1)
 		{
 			free(value);
@@ -78,10 +79,7 @@ int		main(int argc, char **argv)
 		}
 		i++;
 	}
-
 	if (!(is_ascending(value, size)))
-	{
-		push_start(value,size);
-	}
+		push_start(value, size);
 	free(value);
 }

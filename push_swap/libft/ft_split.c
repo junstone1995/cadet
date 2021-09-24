@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 17:19:35 by junseole          #+#    #+#             */
-/*   Updated: 2021/01/09 17:03:31 by junseole         ###   ########.fr       */
+/*   Updated: 2021/09/24 15:00:50 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	get_word_cnt(char const *s, char c)
 {
-	size_t cnt;
+	size_t	cnt;
 
 	cnt = 0;
 	while (*s)
@@ -31,9 +31,9 @@ static size_t	get_word_cnt(char const *s, char c)
 	return (cnt);
 }
 
-static char		**free_arr(char **ret)
+static char	**free_arr(char **ret)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (ret[i])
@@ -46,26 +46,39 @@ static char		**free_arr(char **ret)
 	return (0);
 }
 
-char			**ft_split(char const *s, char c)
+static char	*malloc_char(char **ret, int size)
+{
+	char	*s;
+
+	s = (char *)malloc(size);
+	if (!s)
+	{
+		free_arr(ret);
+		return (0);
+	}
+	return (s);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**ret;
 	char	*from;
 	size_t	idx;
 	size_t	size;
 
-	if (!s || !(ret = (char**)malloc(sizeof(char*) * (get_word_cnt(s, c) + 1))))
-		return (0);
+	ret = (char **)malloc(sizeof(char *) * (get_word_cnt(s, c) + 1));
+	if (!ret || !s)
+		return (free_arr(ret));
 	idx = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			from = (char*)s;
+			from = (char *)s;
 			while (*s && *s != c)
 				++s;
 			size = s - from + 1;
-			if (!(ret[idx] = (char*)malloc(size)))
-				return (free_arr(ret));
+			ret[idx] = malloc_char(ret, size);
 			ft_strlcpy(ret[idx++], from, size);
 		}
 		else
