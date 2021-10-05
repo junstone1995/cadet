@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:19:50 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/25 06:13:14 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/05 23:43:55 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void			add_front_b(t_deque *q, int value);
 int				delete_rear_b(t_deque *q);
 int				delete_front_b(t_deque *q);
 int				is_ascending(int *value, int size);
+int				find_pivot(t_deque *q, int start, int end);
+void			quick_sort(int *arr, int left, int right);
+void			swap(int *a, int *b);
 void			push_start(int *value, int size);
+void			push_swap(t_deque *a, t_deque *b, int size);
 void			sa(t_deque *a);
 void			sb(t_deque *b);
 void			pa(t_deque *a, t_deque *b);
