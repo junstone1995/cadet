@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 21:30:46 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/23 21:52:00 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/19 22:38:03 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlen2(char **str)
 		j = 0;
 		while (str[i][j] != '\0')
 		{
-			if (str[i][j] < '0' || str[i][j] > '9')
+			if (!((str[i][j] >= '0' && str[i][j] <= '9') || str[i][j] == '-'))
 			{
 				return (-1);
 			}

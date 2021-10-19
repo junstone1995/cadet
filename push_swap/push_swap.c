@@ -6,16 +6,17 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:47:27 by junseole          #+#    #+#             */
-/*   Updated: 2021/10/19 17:13:33 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/19 22:34:49 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_a(t_deque *a, t_deque *b, int len)
+static int	push_a(t_deque *a, t_deque *b, int len)
 {
 	while (len--)
 		pa(a, b);
+	return (len);
 }
 
 int	sorted_check(t_deque *q, int len, int order)
@@ -85,14 +86,14 @@ int	quick_sort_b(t_deque *a, t_deque *b, int len)
 	int	pushed_under;
 
 	if (sorted_check(b, len, 2))
-		push_a(a, b, len);
+		len = push_a(a, b, len);
 	pushed_under = 0;
-	nb_elem = len;
 	if (len <= 3)
 	{
 		sort_three_b(a, b, len);
 		return (1);
 	}
+	nb_elem = len;
 	pivot = find_pivot(b, len);
 	while (len != nb_elem / 2)
 	{
