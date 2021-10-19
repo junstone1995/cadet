@@ -6,53 +6,19 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 22:23:38 by junseole          #+#    #+#             */
-/*   Updated: 2021/10/05 23:56:13 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/19 17:13:30 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_ascending(int *value, int size)
+static void	swap(int *a, int *b)
 {
-	int	i;
-	int	num;
+	int	tmp;
 
-	i = 1;
-	num = value[0];
-	while (i < size)
-	{
-		if (num > value[i])
-			return (0);
-		num = value[i];
-		i++;
-	}
-	return (1);
-}
-
-int	find_pivot(t_deque *q, int start, int end)
-{
-	int	*arr;
-	int	i;
-	int	num;
-	int	size;
-
-	i = 0;
-	size = end - start + 1;
-	arr = malloc(sizeof(int) * (size));
-	if (!arr)
-		return (-1);
-	while (i < size)
-	{
-		arr[i] = q->value[i + start];
-		i++;
-	}
-	quick_sort(arr, start, end);
-	if (size % 2 == 0)
-		num = arr[(end - start) / 2 + 1];
-	else
-		num = arr[(end - start) / 2];
-	free(arr);
-	return (num);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 void	quick_sort(int *arr, int left, int right)
@@ -81,11 +47,35 @@ void	quick_sort(int *arr, int left, int right)
 	quick_sort(arr, end + 1, right);
 }
 
-void	swap(int *a, int *b)
+int	is_ascending(int *value, int size)
 {
-	int	tmp;
+	int	i;
+	int	num;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	i = 1;
+	num = value[0];
+	while (i < size)
+	{
+		if (num > value[i])
+			return (0);
+		num = value[i];
+		i++;
+	}
+	return (1);
+}
+
+int	find_pivot(t_deque *q, int len)
+{
+	int	*arr;
+	int	i;
+	int	num;
+
+	arr = (int *)malloc(sizeof(int) * len);
+	i = -1;
+	while (++i < len)
+		arr[i] = q->value[i];
+	quick_sort(arr, 0, len - 1);
+	num = arr[len / 2];
+	free(arr);
+	return (num);
 }

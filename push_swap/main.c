@@ -6,13 +6,13 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:27:31 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/25 04:14:42 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/19 17:13:25 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	error(void)
+void	error(void)
 {
 	ft_putstr("Error\n");
 	exit(0);
@@ -54,7 +54,7 @@ static int	save_value(int *value, char *s, int size)
 	}
 	if (cnt == -1)
 		size = -1;
-	free(split_s);
+	free_arr(split_s);
 	return (size);
 }
 
@@ -80,6 +80,6 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	if (!(is_ascending(value, size)))
-		push_start(value, size);
+		push_swap(value, size);
 	free(value);
 }

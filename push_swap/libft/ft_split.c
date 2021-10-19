@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 17:19:35 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/24 15:00:50 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/19 16:58:45 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,6 @@ static size_t	get_word_cnt(char const *s, char c)
 			++s;
 	}
 	return (cnt);
-}
-
-static char	**free_arr(char **ret)
-{
-	size_t	i;
-
-	i = 0;
-	while (ret[i])
-	{
-		free(ret[i]);
-		i++;
-	}
-	free(ret);
-	ret = 0;
-	return (0);
 }
 
 static char	*malloc_char(char **ret, int size)

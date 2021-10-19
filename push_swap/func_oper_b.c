@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 05:03:13 by junseole          #+#    #+#             */
-/*   Updated: 2021/09/25 06:14:07 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/19 17:13:09 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,52 @@
 
 void	sb(t_deque *b)
 {
-	int	first;
-	int	second;
+	int	tmp;
 
-	first = delete_rear_b(b);
-	second = delete_rear_b(b);
-	add_rear_b(b, first);
-	add_rear_b(b, second);
+	ft_putstr("sb\n");
+	tmp = b->value[0];
+	b->value[0] = b->value[1];
+	b->value[1] = tmp;
 }
 
 void	pb(t_deque *a, t_deque *b)
 {
-	int	num_a;
+	int	i;
 
-	if (is_empty(a))
-		return ;
-	num_a = delete_front_a(a);
-	add_rear_b(b, num_a);
+	ft_putstr("pb\n");
+	b->len++;
+	i = b->len;
+	while (--i > 0)
+		b->value[i] = b->value[i - 1];
+	b->value[0] = a->value[0];
+	i = -1;
+	a->len--;
+	while (++i < a->len)
+		a->value[i] = a->value[i + 1];
 }
 
 void	rb(t_deque *b)
 {
-	int	top;
+	int	tmp;
 	int	i;
 
-	i = b->rear;
-	top = b->value[b->rear - 1];
-	while (i > 0)
-	{
-		b->value[i] = b->value[i - 1];
-		i--;
-	}
-	b->value[i] = top;
+	ft_putstr("rb\n");
+	tmp = b->value[0];
+	i = -1;
+	while (++i < b->len - 1)
+		b->value[i] = b->value[i + 1];
+	b->value[b->len - 1] = tmp;
 }
 
 void	rrb(t_deque *b)
 {
-	int	bot;
+	int	tmp;
 	int	i;
 
-	i = b->front;
-	bot = b->value[b->front];
-	while (i < b->rear - 1)
-	{
-		b->value[i] = b->value[i + 1];
-		i++;
-	}
-	b->value[i] = bot;
+	ft_putstr("rrb\n");
+	tmp = b->value[b->len - 1];
+	i = b->len;
+	while (--i > 0)
+		b->value[i] = b->value[i - 1];
+	b->value[0] = tmp;
 }

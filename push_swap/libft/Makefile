@@ -8,7 +8,8 @@ SRCS = ft_split.c \
 		ft_strlen2.c \
 		ft_putchar.c \
 		ft_putstr.c \
-		ft_atoi.c
+		ft_atoi.c \
+		ft_free.c
 
 OBJS = $(SRCS:.c=.o)
 
