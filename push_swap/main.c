@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:27:31 by junseole          #+#    #+#             */
-/*   Updated: 2021/10/20 14:57:30 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/20 17:11:13 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 	int	size;
 	int	*value;
 
-	value = (int *)malloc(sizeof(int) * 500);
+	value = (int *)malloc(sizeof(int) * 100000);
 	if (!value || argc <= 1)
 		return (-1);
 	i = 1;

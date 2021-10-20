@@ -23,10 +23,11 @@ size_t	ft_strlen2(char **str)
 		j = 0;
 		while (str[i][j] != '\0')
 		{
-			if (!((str[i][j] >= '0' && str[i][j] <= '9') || str[i][j] == '-'))
-			{
+			if (!((str[i][j] >= '0' && str[i][j] <= '9')
+				|| str[i][j] == '-' || str[i][j] == '+'))
 				return (-1);
-			}
+			if ((str[i][j] == '+' || str[i][j] == '-') && str[i][j + 1] == '\0')
+				return (-1);
 			j++;
 		}
 		i++;
