@@ -6,7 +6,7 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:27:31 by junseole          #+#    #+#             */
-/*   Updated: 2021/10/19 22:33:50 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:57:30 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error(void)
 	exit(0);
 }
 
-static int	check_value(int *value, int num, int size)
+int	check_value(int *value, int num, int size)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ static int	check_value(int *value, int num, int size)
 	return (0);
 }
 
-static int	save_value(int *value, char *s, int size)
+int	save_value(int *value, char *s, int size)
 {
 	char		**split_s;
 	int			cnt;
