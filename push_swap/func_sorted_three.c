@@ -6,13 +6,13 @@
 /*   By: junseole <junseole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 01:20:08 by junseole          #+#    #+#             */
-/*   Updated: 2021/10/19 17:13:14 by junseole         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:55:56 by junseole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	three_sort(t_deque *a)
+void	three_sort(t_deque *a)
 {
 	if (a->value[0] < a->value[1] && a->value[0] < a->value[2])
 	{
@@ -41,7 +41,7 @@ static void	three_sort(t_deque *a)
 	}
 }
 
-static void	sort_three_a_2(t_deque *a, t_deque *b, int len)
+void	sort_three_a_2(t_deque *a, t_deque *b, int len)
 {
 	while (len != 3 || !(a->value[0] < a->value[1]
 			&& a->value[1] < a->value[2]))
@@ -63,7 +63,7 @@ static void	sort_three_a_2(t_deque *a, t_deque *b, int len)
 	}
 }
 
-static void	sort_three_b_2(t_deque *a, t_deque *b, int len)
+void	sort_three_b_2(t_deque *a, t_deque *b, int len)
 {
 	while (len || !(a->value[0] < a->value[1] && a->value[1] < a->value[2]))
 	{
